@@ -8,7 +8,7 @@ mongoose.connection.on('connected', function() {
   console.log('mongo connect success')
 })
 
-// 文档：user是文档名，值是new mongoose.Schema，里面的user等是字段
+// 新建模型：user是文档名，值是new mongoose.Schema，里面的user等是字段
 const User = mongoose.model('user', new mongoose.Schema({
   user: {type: String, require: true},
   age: {type: Number, require: true},
@@ -16,7 +16,7 @@ const User = mongoose.model('user', new mongoose.Schema({
 
 // 新增数据：
 // User.create({
-//   user: 'Asphalt',
+//   user: 'Gerst',
 //   age: 18
 // }, function(err, doc) {
 //   if (!err) {
@@ -27,11 +27,20 @@ const User = mongoose.model('user', new mongoose.Schema({
 // })
 
 // 删除数据：
-User.remove({
-  age: 18
-}, function(err, doc) {
-  console.log(doc)
-})
+// User.remove({
+//   age: 18
+// }, function(err, doc) {
+//   console.log(doc)
+// })
+
+// 更新数据：
+// User.updateMany({
+//   'user': 'Asphalt'
+// }, {
+//   '$set': {age: 23}
+// }, function(err, doc) {
+//   console.log(doc)
+// })
 
 // 新建app：
 const app = express()
@@ -41,9 +50,9 @@ app.get('/', function(req, res) {
 })
 
 app.get('/data', function(req, res) {
-  User.find({}, function(err, doc) {
-    return res.json(doc)
-  })
+  // User.findOne({user: 'Gerst'}, function(err, doc) {
+  //   return res.json(doc)
+  // }) //查找数据
 })
 
 // app.get('/delete', function(req, res) {
