@@ -25,7 +25,7 @@
 // export default App;
 
 import React from 'react'
-import { Button } from 'antd-mobile'
+import { Button, List } from 'antd-mobile'
 // import 'antd-mobile/dist/antd-mobile.css'
 
 class App extends React.Component {
@@ -74,11 +74,17 @@ class Battalion1 extends React.Component {
         <h2>一营营长，{this.props.boss}</h2>
         {/* <button onClick={() => this.addSolder()}>新兵入伍</button> */}
         <Button type='primary' onClick={this.addSolder}>新兵入伍</Button>
-        <ul>
+        <List
+          renderHeader={() => {'士兵列表'}}
+        >
           {this.state.solders.map(v => {
-            return <li key={v}>{v}</li>
+            return (
+              <List.Item key={v}>
+                {v}
+              </List.Item>
+            )
           })}
-        </ul>
+        </List>
       </div>
     )
   }

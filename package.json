@@ -151,9 +151,23 @@
     ],
     "resetMocks": true
   },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
   "=babel": {
     "presets": [
       "react-app"
+    ],
+    "plugins": [
+      [
+        "import",
+        {
+          "libraryName": "antd-mobile",
+          "style": "css"
+        }
+      ]
     ]
   },
   "devDependencies": {
