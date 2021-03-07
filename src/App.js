@@ -25,6 +25,8 @@
 // export default App;
 
 import React from 'react'
+import { Button } from 'antd-mobile'
+// import 'antd-mobile/dist/antd-mobile.css'
 
 class App extends React.Component {
   render() {
@@ -56,18 +58,6 @@ class Battalion1 extends React.Component {
     // this.addSolder = this.addSolder.bind(this)
     console.log('constructor')
   }
-  componentWillMount() {
-    console.log('componentWillMount')
-  }
-  componentDidMount() {
-    console.log('componentDidMount')
-  }
-  componentDidCatch() {
-    console.log('componentDidCatch')
-  }
-  shouldUpdateComponent() {
-    console.log('shouldUpdateComponent')
-  }
   addSolder = () => {
     console.log('addSolder')
     this.setState({
@@ -83,7 +73,7 @@ class Battalion1 extends React.Component {
       <div>
         <h2>一营营长，{this.props.boss}</h2>
         {/* <button onClick={() => this.addSolder()}>新兵入伍</button> */}
-        <button onClick={this.addSolder}>新兵入伍</button>
+        <Button type='primary' onClick={this.addSolder}>新兵入伍</Button>
         <ul>
           {this.state.solders.map(v => {
             return <li key={v}>{v}</li>
