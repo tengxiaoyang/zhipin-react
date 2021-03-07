@@ -44,9 +44,28 @@ function 骑兵连(props) {
 }
 
 class 一营 extends React.Component{
+  constructor(props) {
+    super(props)
+    this.state = {
+      solders: [
+        '虎子',
+        '柱子',
+        '王根生'
+      ]
+    }
+  }
   render() {
     const boss = '张大喵'
-    return <h2>一营营长，{this.props.老大}</h2>
+    return (
+      <div>
+        <h2>一营营长，{this.props.老大}</h2>
+        <ul>
+          {this.state.solders.map(v => {
+            return <li key={v}>{v}</li>
+          })}
+        </ul>
+      </div>
+    )
   }
 }
 
