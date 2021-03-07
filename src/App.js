@@ -26,24 +26,24 @@
 
 import React from 'react'
 
-class App extends React.Component{
+class App extends React.Component {
   render() {
     const boss = '李云龙'
     return (
       <div>
         <h2>独立团团长，{boss}</h2>
-        <一营 老大='张大喵'></一营>
-        <骑兵连 老大='孙德胜'></骑兵连>
+        <Battalion1 boss='张大喵'></Battalion1>
+        <Squadron boss='孙德胜'></Squadron>
       </div>
     )
   }
 }
 
-function 骑兵连(props) {
-  return <h2>骑兵连连长，{props.老大}，冲啊！</h2>
+function Squadron(props) {
+  return <h2>骑兵连连长，{props.boss}，冲啊！</h2>
 }
 
-class 一营 extends React.Component{
+class Battalion1 extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -53,12 +53,37 @@ class 一营 extends React.Component{
         '王根生'
       ]
     }
+    // this.addSolder = this.addSolder.bind(this)
+    console.log('constructor')
+  }
+  componentWillMount() {
+    console.log('componentWillMount')
+  }
+  componentDidMount() {
+    console.log('componentDidMount')
+  }
+  componentDidCatch() {
+    console.log('componentDidCatch')
+  }
+  shouldUpdateComponent() {
+    console.log('shouldUpdateComponent')
+  }
+  addSolder = () => {
+    console.log('addSolder')
+    this.setState({
+      solders: [
+        ...this.state.solders, '新兵蛋子' + Math.random()
+      ]
+    })
   }
   render() {
-    const boss = '张大喵'
+    console.log('render')
+    // const boss = '张大喵'
     return (
       <div>
-        <h2>一营营长，{this.props.老大}</h2>
+        <h2>一营营长，{this.props.boss}</h2>
+        {/* <button onClick={() => this.addSolder()}>新兵入伍</button> */}
+        <button onClick={this.addSolder}>新兵入伍</button>
         <ul>
           {this.state.solders.map(v => {
             return <li key={v}>{v}</li>
