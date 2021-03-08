@@ -56,7 +56,7 @@ class Battalion1 extends React.Component {
       ]
     }
     // this.addSolder = this.addSolder.bind(this)
-    console.log('constructor')
+    // console.log('constructor')
   }
   addSolder = () => {
     console.log('addSolder')
@@ -67,7 +67,7 @@ class Battalion1 extends React.Component {
     })
   }
   render() {
-    console.log('render')
+    // console.log('render')
     // const boss = '张大喵'
     return (
       <div>
