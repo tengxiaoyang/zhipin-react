@@ -1,54 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk'
 import App from './App';
-import { createStore } from 'redux';
-import reportWebVitals from './reportWebVitals';
+import { counter, addGun, removeGun, addGunAsync } from './index.redux'
 
-// 新建Store
-// 通过reducer建立
-// 根据老的状态和action生成新的state
+// 新建Store，并且以组件属性的形式传入组件里：
+const store = createStore(counter, compose(
+  applyMiddleware(thunk),
+  window.devToolsExtension ? window.devToolsExtension() : () => {}
+)) //compose可以组合函数
 
-function counter(state = 0, action) {
-  switch (action.type) {
-    case '加机关枪':
-      return state + 1
-    case '减机关枪':
-      return state - 1
-    default:
-      return 10
-  }
+applyMiddleware(thunk)
+
+function render() {
+  ReactDOM.render(
+    <React.StrictMode>
+      <App 
+        store={store} 
+        addGun={addGun}
+        removeGun={removeGun}
+        addGunAsync={addGunAsync}
+      />
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
 }
+render()
 
-// 新建Store：
-const store = createStore(counter)
+// 用subscribe订阅render函数，当状态变化时render会重新执行，重新渲染整个页面：
+store.subscribe(render)
 
-const init = store.getState()
-console.log(init)
-
-// 定义事件：
-function listener() {
-  const current = store.getState()
-  console.log(`现在有机枪${current}把`)
-}
-store.subscribe(listener)
-
-// 派发事件，传递action：
-store.dispatch({type: '加机关枪'})
-// console.log(store.getState())
-store.dispatch({type: '加机关枪'})
-// console.log(store.getState())
-store.dispatch({type: '减机关枪'})
-// console.log(store.getState())
-
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
