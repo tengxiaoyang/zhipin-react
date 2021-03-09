@@ -2,6 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addGun, removeGun, addGunAsync } from './index.redux'
 
+@connect(
+  // 把state什么属性放到props里：
+  state => ({num: state}),
+  // 把state中的什么方法放到props里，会自动dispatch：
+  { addGun, removeGun, addGunAsync },
+)
 class App extends React.Component {
   // constructor(props) {
   //   super(props)
@@ -19,10 +25,4 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {num: state} //把状态放到属性里
-}
-const actionCreators = { addGun, removeGun, addGunAsync } //把方法传入
-
-App = connect(mapStateToProps, actionCreators)(App) //先执行connect，再把App当做参数传入，这就是一个装饰器
 export default App
