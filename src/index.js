@@ -11,28 +11,18 @@ import {
   Switch
 } from 'react-router-dom'
 
-import { counter } from './index.redux'
+// import { counter } from './index.redux'
+import reducer from './reducer' //合并所有reducer
 import Auth from './Auth'
 import Dashboard from './Dashboard'
 
 // 新建Store，并且以组件属性的形式传入组件里：
-const store = createStore(counter, compose(
+const store = createStore(reducer, compose(
   applyMiddleware(thunk),
   window.devToolsExtension ? window.devToolsExtension() : () => {}
 )) //compose可以组合函数
 
-applyMiddleware(thunk)
-
-class Test extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    console.log(this.props)
-    // this.props.history.push('/')
-    return <h2>测试组件 {this.props.match.params.location}</h2>
-  }
-}
+console.log(store.getState())
 
 // 页面设计：
 // 登录

@@ -1,11 +1,16 @@
+// 定义action：
 const LOGIN = 'LOGIN'
 const LOGOUT = 'LOGOUT'
 
 // 定义reducer：
 export function auth(
-  state={isAuth=false, user: '李云龙'}, action
-  ) {
-  Switch (action.type) {
+  state = {
+    isAuth: false, 
+    user: '李云龙'
+  }, 
+  action
+) {
+  switch (action.type) {
     case LOGIN:
       return {...state, isAuth: true}
     case LOGOUT:
@@ -13,9 +18,9 @@ export function auth(
     default:
       return state
   }
-}
+} //reducer真正处理页面逻辑
 
-// 定义action：
+// 用action creator生成action：
 export function login() {
   return {type: LOGIN}
 }
