@@ -10,6 +10,7 @@ export function auth(
   }, 
   action
 ) {
+  // console.log(state)
   switch (action.type) {
     case LOGIN:
       return {...state, isAuth: true}
