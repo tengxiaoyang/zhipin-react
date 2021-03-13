@@ -2,7 +2,7 @@
 const ADD_GUN = '加机关枪'
 const REMOVE_GUN = '减机关枪'
 
-// reducer：
+// 定义reducer：
 export function counter(state = 0, action) {
   switch (action.type) {
     case ADD_GUN:
@@ -14,6 +14,7 @@ export function counter(state = 0, action) {
   }
 }
 
+// 定义action：
 // 把对象变成函数返回值：
 // action creator，专门创建action：
 export function addGun() {
