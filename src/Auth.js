@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { login } from './Auth.redux'
 import { Redirect } from 'react-router-dom'
+import axios from 'axios'
 
 // 有两个reducer, 需要合并reducer：
 @connect(
@@ -13,6 +14,12 @@ class Auth extends React.Component {
   // constructor(props) {
   //   super(props)
   // }
+  componentDidMount() {
+    axios.get('/data')
+      .then(res => {
+        console.log(res)
+      })
+  }
   render() {
     return (
       <div>
