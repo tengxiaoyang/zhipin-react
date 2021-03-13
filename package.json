@@ -87,7 +87,7 @@
     "build": "react-app-rewired build",
     "=test": "node scripts/test.js",
     "test": "react-app-rewired test --env=jsdom",
-    "eject": "react-app-rewired eject"
+    "=eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": [

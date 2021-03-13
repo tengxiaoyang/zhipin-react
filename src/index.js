@@ -11,7 +11,6 @@ import {
   Switch
 } from 'react-router-dom'
 
-import App from './App';
 import { counter } from './index.redux'
 import Auth from './Auth'
 import Dashboard from './Dashboard'
@@ -23,13 +22,6 @@ const store = createStore(counter, compose(
 )) //compose可以组合函数
 
 applyMiddleware(thunk)
-
-function Erying() {
-  return <h2>二营</h2>
-}
-function Qibinglian() {
-  return <h2>骑兵连</h2>
-}
 
 class Test extends React.Component {
   constructor(props) {
@@ -56,7 +48,7 @@ ReactDOM.render(
       <Switch>
         <Route path='/login' component={Auth}></Route>
         <Route path='/dashboard' component={Dashboard}></Route>
-        <Redirect to='/dashboard'></Redirect>
+        <Redirect to='/dashboard'></Redirect> {/*如果都没命中就跳转到dashboard*/}
       </Switch> {/*只渲染命中的第一个Route*/}
     </BrowserRouter>
   </Provider>),
