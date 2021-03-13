@@ -6,7 +6,6 @@ import { Provider } from 'react-redux'
 import { 
   BrowserRouter, 
   Route, 
-  Link, 
   Redirect,
   Switch
 } from 'react-router-dom'
@@ -22,7 +21,7 @@ const store = createStore(reducer, compose(
   window.devToolsExtension ? window.devToolsExtension() : () => {}
 )) //compose可以组合函数
 
-console.log(store.getState())
+// console.log(store.getState())
 
 // 页面设计：
 // 登录
