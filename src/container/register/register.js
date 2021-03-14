@@ -10,7 +10,7 @@ class Register extends React.Component {
         <Logo></Logo>
         <h2>注册页</h2>
         <WingBlank>
-          <Button type='primary'>登录</Button>
+          <Button type='primary'>注册</Button>
         </WingBlank>
       </div>
     )
