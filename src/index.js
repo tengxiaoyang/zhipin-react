@@ -14,7 +14,7 @@ import Login from './container/login/login'
 import Register from './container/register/register'
 import reducer from './reducer' //合并所有reducer
 import './config'
-// import Auth from './Auth'
+import AuthRoute from './component/authroute/authroute'
 // import Dashboard from './Dashboard'
 
 // 新建Store，并且以组件属性的形式传入组件里：
@@ -27,6 +27,7 @@ ReactDOM.render(
   (<Provider store={store}>
     <BrowserRouter>
       <div>
+        <AuthRoute></AuthRoute>
         <Route path='/login' component={Login}></Route>
         <Route path='/register' component={Register}></Route>
         {/* <Redirect to='/login'></Redirect> 如果都没命中就跳转到login */}
