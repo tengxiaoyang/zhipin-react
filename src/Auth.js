@@ -1,16 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { login } from './Auth.redux'
+import { login, getUserData } from './Auth.redux'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 // 有两个reducer, 需要合并reducer：
 @connect(
   state => state.auth,
-  { login }
+  { login, getUserData }
 )
 
 class Auth extends React.Component {
+
+  componentDidMount() {
+    this.props.getUserData()
+  }
 
   // 没有redux时：
   // constructor(props) {
