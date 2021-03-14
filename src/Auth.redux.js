@@ -37,14 +37,14 @@ export function getUserData() {
     axios.get('/data')
       .then(res => {
         if (res.status === 200) {
-          dispatch(UserData(res.data))
+          dispatch(userData(res.data))
         }
         // console.log(res)
       })
   }
 }
 
-export function UserData(data) {
+export function userData(data) {
   // 要返回一个异步对象：
   // 用dispatch来通知数据修改：
   return {type: USER_DATA, payload: data}
