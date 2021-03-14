@@ -12,9 +12,10 @@ import {
 
 import Login from './container/login/login'
 import Register from './container/register/register'
+import AuthRoute from './component/authroute/authroute'
+
 import reducer from './reducer' //合并所有reducer
 import './config'
-import AuthRoute from './component/authroute/authroute'
 // import Dashboard from './Dashboard'
 
 // 新建Store，并且以组件属性的形式传入组件里：
