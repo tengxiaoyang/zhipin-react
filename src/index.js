@@ -10,6 +10,8 @@ import {
   Switch
 } from 'react-router-dom'
 
+import Login from './container/login/login'
+import Register from './container/register/register'
 import reducer from './reducer' //合并所有reducer
 import './config'
 // import Auth from './Auth'
@@ -24,7 +26,11 @@ const store = createStore(reducer, compose(
 ReactDOM.render(
   (<Provider store={store}>
     <BrowserRouter>
-    
+      <div>
+        <Route path='/login' component={Login}></Route>
+        <Route path='/register' component={Register}></Route>
+        {/* <Redirect to='/login'></Redirect> 如果都没命中就跳转到login */}
+      </div>
     </BrowserRouter>
   </Provider>),
   document.getElementById('root')
