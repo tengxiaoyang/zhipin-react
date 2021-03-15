@@ -36,10 +36,12 @@ class Register extends React.Component {
             <WhiteSpace></WhiteSpace>
             <InputItem
               onChange={v=>this.handleChange('pwd', v)}
+              type='password'
             >密码</InputItem>
             <WhiteSpace></WhiteSpace>
             <InputItem
               onChange={v=>this.handleChange('repeatpwd', v)}
+              type='password'
             >确认密码</InputItem>
             <WhiteSpace></WhiteSpace>
             <RadioItem 
@@ -53,7 +55,10 @@ class Register extends React.Component {
             >我是BOSS</RadioItem>
           </List>
           <WhiteSpace></WhiteSpace>
-          <Button onClick={this.handleRegister} type='primary'>注册</Button>
+          <Button 
+            onClick={this.handleRegister} 
+            type='primary'
+          >注册</Button>
         </WingBlank>
       </div>
     )
