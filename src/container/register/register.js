@@ -6,13 +6,20 @@ class Register extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      type: 'genius'
+      user: '',
+      pwd: '',
+      repeatpwd: '',
+      type: 'genius' //或者boss
     }
-    this.register = this.register.bind(this)
+    this.handleRegister = this.handleRegister.bind(this)
   }
-  register() {
-    console.log(this.props)
-    this.props.history.push('/register')
+  handleChange(key, value) {
+    this.setState({
+      [key]: value
+    })
+  }
+  handleRegister() {
+    console.log(this.state)
   }
   render() {
     const RadioItem = Radio.RadioItem
@@ -23,18 +30,30 @@ class Register extends React.Component {
         <WingBlank>
           <List>
             <WhiteSpace></WhiteSpace>
-            <InputItem>用户名</InputItem>
+            <InputItem
+              onChange={v=>this.handleChange('user', v)}
+            >用户名</InputItem>
             <WhiteSpace></WhiteSpace>
-            <InputItem>密码</InputItem>
+            <InputItem
+              onChange={v=>this.handleChange('pwd', v)}
+            >密码</InputItem>
             <WhiteSpace></WhiteSpace>
-            <InputItem>确认密码</InputItem>
+            <InputItem
+              onChange={v=>this.handleChange('repeatpwd', v)}
+            >确认密码</InputItem>
             <WhiteSpace></WhiteSpace>
-            <RadioItem checked={this.state.type=='genius'}>我是牛人</RadioItem>
+            <RadioItem 
+              checked={this.state.type==='genius'}
+              onChange={()=>this.handleChange('type', 'genius')}
+            >我是牛人</RadioItem>
             <WhiteSpace></WhiteSpace>
-            <RadioItem checked={this.state.type=='boss'}>我是BOSS</RadioItem>
+            <RadioItem 
+              checked={this.state.type==='boss'}
+              onChange={()=>this.handleChange('type', 'boss')}
+            >我是BOSS</RadioItem>
           </List>
           <WhiteSpace></WhiteSpace>
-          <Button onClick={this.register} type='primary'>注册</Button>
+          <Button onClick={this.handleRegister} type='primary'>注册</Button>
         </WingBlank>
       </div>
     )
