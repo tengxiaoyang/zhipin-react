@@ -36,11 +36,7 @@ class AuthRoute extends Component {
     // 用户是否完善信息（头像，简介）
   }
   render() { 
-    return (
-      <div>
-        <h1>判断跳转的地方</h1>
-      </div>
-    );
+    return null
   }
 }
  

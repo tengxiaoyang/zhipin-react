@@ -1,6 +1,16 @@
 import React from 'react'
 import Logo from '../../component/logo/logo'
 import { List, InputItem, Radio, Button, WingBlank, WhiteSpace } from 'antd-mobile'
+import { connect } from 'react-redux'
+import { register } from '../../redux/user.redux'
+
+const Item = List.Item
+
+// 需要合并reducer：
+@connect(
+  state => state.user,
+  { register }
+)
 
 class Register extends React.Component {
   constructor(props) {
@@ -19,7 +29,8 @@ class Register extends React.Component {
     })
   }
   handleRegister() {
-    console.log(this.state)
+    // console.log(this.state)
+    this.props.register(this.state)
   }
   render() {
     const RadioItem = Radio.RadioItem
@@ -55,6 +66,8 @@ class Register extends React.Component {
             >我是BOSS</RadioItem>
           </List>
           <WhiteSpace></WhiteSpace>
+          {this.props.msg ? <Item>{this.props.msg}</Item> : null}
+            <WhiteSpace></WhiteSpace>
           <Button 
             onClick={this.handleRegister} 
             type='primary'
