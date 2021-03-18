@@ -65,9 +65,7 @@ class Register extends React.Component {
               onChange={()=>this.handleChange('type', 'boss')}
             >我是BOSS</RadioItem>
           </List>
-          <WhiteSpace></WhiteSpace>
-          {this.props.msg ? <Item>{this.props.msg}</Item> : null}
-            <WhiteSpace></WhiteSpace>
+          {this.props.msg ? <p className='error-msg'>{this.props.msg}</p> : null}
           <Button 
             onClick={this.handleRegister} 
             type='primary'
