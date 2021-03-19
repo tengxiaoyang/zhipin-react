@@ -37,7 +37,7 @@ class Register extends React.Component {
     return (
       <div>
         <Logo></Logo>
-        <h2>注册页</h2>
+        {/* <h2>注册页</h2> */}
         <WingBlank>
           <List>
             <WhiteSpace></WhiteSpace>
