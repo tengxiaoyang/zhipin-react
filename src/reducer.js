@@ -5,7 +5,7 @@ import { user } from './redux/user.redux'
 
 export default combineReducers(
   {
-    user,
+    user
     // auth
   }
 )

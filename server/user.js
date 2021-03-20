@@ -16,16 +16,12 @@ Router.post('/register', function(req, res) {
     if (doc) {
       return res.json({code: 1, msg: '用户名已存在，请重新输入'})
     }
-    User.create({user, pwd, type}, function(err, doc) {
-      if (err) {
+    User.create({user, pwd, type}, function(e, d) {
+      if (e) {
         return res.json({code: 1, msg: '服务器维护中，请耐心等待'})
-        return res.json({code: 0})
       }
+      return res.json({code: 0})
     })
-  })
-
-  User.find({}, function(err, doc) {
-    return res.json(doc)
   })
 })
 

@@ -4,7 +4,7 @@ import { List, InputItem, Radio, Button, WingBlank, WhiteSpace } from 'antd-mobi
 import { connect } from 'react-redux'
 import { register } from '../../redux/user.redux'
 
-const Item = List.Item
+// const Item = List.Item
 
 // 需要合并reducer：
 @connect(
