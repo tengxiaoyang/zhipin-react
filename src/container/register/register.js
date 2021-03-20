@@ -2,9 +2,8 @@ import React from 'react'
 import Logo from '../../component/logo/logo'
 import { List, InputItem, Radio, Button, WingBlank, WhiteSpace } from 'antd-mobile'
 import { connect } from 'react-redux'
+import { Redirect } from "react-router-dom";
 import { register } from '../../redux/user.redux'
-
-// const Item = List.Item
 
 // 需要合并reducer：
 @connect(
@@ -17,6 +16,7 @@ class Register extends React.Component {
     super(props)
     this.state = {
       user: '',
+      repeatuser: '',
       pwd: '',
       repeatpwd: '',
       type: 'genius' //或者boss
@@ -33,9 +33,13 @@ class Register extends React.Component {
     this.props.register(this.state)
   }
   render() {
+    // const Item = List.Item
     const RadioItem = Radio.RadioItem
     return (
       <div>
+        {this.props.redirectTo ? 
+          <Redirect to={this.props.redirectTo}></Redirect> : null
+        }
         <Logo></Logo>
         {/* <h2>注册页</h2> */}
         <WingBlank>
@@ -43,16 +47,24 @@ class Register extends React.Component {
             <WhiteSpace></WhiteSpace>
             <InputItem
               onChange={v=>this.handleChange('user', v)}
+              placeholder='输入用户名'
             >用户名</InputItem>
+            <WhiteSpace></WhiteSpace>
+            <InputItem
+              onChange={v=>this.handleChange('repeatuser', v)}
+              placeholder='再次输入用户名'
+            >确认用户名</InputItem>
             <WhiteSpace></WhiteSpace>
             <InputItem
               onChange={v=>this.handleChange('pwd', v)}
               type='password'
+              placeholder='输入密码'
             >密码</InputItem>
             <WhiteSpace></WhiteSpace>
             <InputItem
               onChange={v=>this.handleChange('repeatpwd', v)}
               type='password'
+              placeholder='再次输入密码'
             >确认密码</InputItem>
             <WhiteSpace></WhiteSpace>
             <RadioItem 
@@ -65,6 +77,7 @@ class Register extends React.Component {
               onChange={()=>this.handleChange('type', 'boss')}
             >我是BOSS</RadioItem>
           </List>
+          <WhiteSpace></WhiteSpace>
           {this.props.msg ? <p className='error-msg'>{this.props.msg}</p> : null}
           <Button 
             onClick={this.handleRegister} 
