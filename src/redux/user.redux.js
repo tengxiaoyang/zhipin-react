@@ -12,7 +12,6 @@ const initState = {
   isAuth: false,
   msg: '',
   user: '',
-  pwd: '',
   type: ''
 }
 
@@ -91,7 +90,8 @@ export function userinfo () {
   // 用户是否完善信息（头像，简介）
 }
 
-export function loadData (userinfo) {
+export function loadData(userinfo) {
+  // console.log(loadData)
   return {
     type: LOAD_DATA,
     payload: userinfo

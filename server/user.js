@@ -35,12 +35,28 @@ Router.post('/register', function(req, res) {
     if (doc) {
       return res.json({code: 1, msg: '用户名已存在，请重新输入'})
     }
-    User.create({user, type, pwd: md5Pwd(pwd)}, function(e, d) {
-      if (e) {
-        return res.json({code: 1, msg: '服务器维护中，请耐心等待'})
-      }
-      return res.json({code: 0})
-    })
+
+    // 用userModel.save方法可以拿到用户的id：
+    const userModel = new User({user, type, pwd: md5Pwd(pwd)})
+      userModel.save(function(e, d) {
+        if (e) {
+          return res.json({code: 1, msg: '服务器维护中，请耐心等待'})
+        }
+
+        // 获取数据：
+        const {user, type, _id} = d
+        res.cookie('userid', _id)
+
+        return res.json({code: 0, data: {user, type, _id}})
+      })
+
+    // 用create无法拿到用户的id：
+    // User.create({user, type, pwd: md5Pwd(pwd)}, function(e, d) {
+    //   if (e) {
+    //     return res.json({code: 1, msg: '服务器维护中，请耐心等待'})
+    //   }
+    //   return res.json({code: 0})
+    // })
   })
 })
 
