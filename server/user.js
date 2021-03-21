@@ -1,3 +1,4 @@
+const { json } = require('body-parser')
 const express = require('express')
 const utils = require('utility')
 const Router = express.Router()
@@ -13,6 +14,30 @@ Router.get('/list', function(req, res) {
   // })
   User.find({}, function(err, doc) {
     return res.json(doc)
+  })
+})
+
+Router.post('/update', function(req, res) {
+  const userid = req.cookies.userid
+  if (!userid) {
+    return json.dumps({code: 1})
+  }
+  const body = req.body
+  User.findByIdAndUpdate(userid, body, function(err, doc) {
+    const data = Object.assign({}, {
+      user: doc.user,
+      type: doc.type
+    }, body)
+    return res.json({code: 0, data})
+  })
+
+  const {user, pwd} = req.body
+  User.findOne({user, pwd: md5Pwd(pwd)}, _filter, function(err, doc) { //第一个是查询条件，第二个是显示条件
+    if (!doc) {
+      return res.json({code: 1, msg: '用户名或密码错误，请重新输入'})
+    }
+    res.cookie('userid', doc._id)
+    return res.json({code: 0, data: doc})
   })
 })
 
