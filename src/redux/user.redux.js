@@ -42,7 +42,8 @@ export function user(state = initState, action) {
 
 // 用action creator生成action：
 
-function authSuccess(data) {
+function authSuccess(obj) {
+  const { pwd, ...data } = obj //过滤pwd，data是剩下的
   return { type: AUTH_SUCCESS, payload: data }
 }
 
