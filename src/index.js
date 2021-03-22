@@ -45,7 +45,7 @@ ReactDOM.render(
         <Switch>
           <Route path='/bossinfo' component={BossInfo}></Route>
           <Route path='/geniusinfo' component={GeniusInfo}></Route>
-          <Route path='/boss' component={Boss}></Route>
+          {/* <Route path='/boss' component={Boss}></Route> */}
           <Route path='/login' component={Login}></Route>
           <Route path='/register' component={Register}></Route>
           {/* 所有路由都会命中这个组件，可以写个404： */}
