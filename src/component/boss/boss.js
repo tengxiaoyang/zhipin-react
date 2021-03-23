@@ -1,21 +1,30 @@
-import React from 'react'
+import React, { Component } from 'react';
 import axios from 'axios'
-import {connect} from 'react-redux'
-import {Card, WhiteSpace,WingBlank} from 'antd-mobile'
-import {getUserList} from '../../redux/chatuser.redux'
-import UserCard from '../usercard/usercard'
-
-@connect(
-	state=>state.chatuser,
-	{getUserList}
-)
-class Boss extends React.Component{
-	componentDidMount() {
-		this.props.getUserList('genius')
-	}
-	render(){
-		return <UserCard userlist={this.props.userlist}></UserCard>
-	}
-
+import { Card, WhiteSpace, WingBlank } from "antd-mobile";
+ 
+class Boss extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: []
+    };
+  }
+  componentDidMount() {
+    axios.get('/user/list?type=genius')
+      .then(res => {
+        if (res.data.code==0) {
+          this.setState({data: res.data.data})
+        }
+      })
+  }
+  render() { 
+    console.log(this.state)
+    return (
+      <div>
+        Boss
+      </div>
+    );
+  }
 }
-export default Boss
+ 
+export default Boss;
