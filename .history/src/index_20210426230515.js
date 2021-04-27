@@ -48,7 +48,7 @@ ReactDOM.render(
         <Switch>
           <Route path='/demo' component={Demo}></Route>
           <Route path='/demo2' component={Demo2}></Route>
-          <Route path='/demo3' component={Demo3}></Route>
+          <Route path='/demo2' component={Demo2}></Route>
           <Route path='/bossinfo' component={BossInfo}></Route>
           <Route path='/geniusinfo' component={GeniusInfo}></Route>
           {/* <Route path='/boss' component={Boss}></Route> */}

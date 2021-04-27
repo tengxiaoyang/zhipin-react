@@ -18,7 +18,6 @@ import GeniusInfo from "./container/geniusinfo/geniusinfo";
 import Dashboard from "./component/dashboard/dashboard";
 import Demo from "./container/demo/demo";
 import Demo2 from "./container/demo/demo2";
-import Demo3 from "./container/demo/demo3";
 
 import reducer from './reducer' //合并所有reducer
 import './config'
@@ -48,7 +47,6 @@ ReactDOM.render(
         <Switch>
           <Route path='/demo' component={Demo}></Route>
           <Route path='/demo2' component={Demo2}></Route>
-          <Route path='/demo3' component={Demo3}></Route>
           <Route path='/bossinfo' component={BossInfo}></Route>
           <Route path='/geniusinfo' component={GeniusInfo}></Route>
           {/* <Route path='/boss' component={Boss}></Route> */}

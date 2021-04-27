@@ -16,9 +16,6 @@ import AuthRoute from './component/authroute/authroute'
 import BossInfo from "./container/bossinfo/bossinfo";
 import GeniusInfo from "./container/geniusinfo/geniusinfo";
 import Dashboard from "./component/dashboard/dashboard";
-import Demo from "./container/demo/demo";
-import Demo2 from "./container/demo/demo2";
-import Demo3 from "./container/demo/demo3";
 
 import reducer from './reducer' //合并所有reducer
 import './config'
@@ -46,16 +43,14 @@ ReactDOM.render(
         <AuthRoute></AuthRoute>
         {/* 只会命中第一个匹配的路由： */}
         <Switch>
-          <Route path='/demo' component={Demo}></Route>
-          <Route path='/demo2' component={Demo2}></Route>
-          <Route path='/demo3' component={Demo3}></Route>
+          
           <Route path='/bossinfo' component={BossInfo}></Route>
           <Route path='/geniusinfo' component={GeniusInfo}></Route>
           {/* <Route path='/boss' component={Boss}></Route> */}
           <Route path='/login' component={Login}></Route>
           <Route path='/register' component={Register}></Route>
           {/* 所有路由都会命中这个组件，可以写个404： */}
-          {/* <Route component={Dashboard}></Route> */}
+          <Route component={Dashboard}></Route>
           {/* <Redirect to='/login'></Redirect> 如果都没命中就跳转到login */}
         </Switch>
       </div>
